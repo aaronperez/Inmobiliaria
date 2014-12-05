@@ -78,8 +78,7 @@ public class Detalle extends Fragment {
     }
 
     public void iniciarFotos(String id) throws IOException {
-        //File [] array = getActivity().getExternalFilesDir(null).listFiles();
-        File [] array = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).listFiles();
+        File [] array = getActivity().getExternalFilesDir(null).listFiles();
         if(array != null && array.length >0){
             for(File a : array){
                 Log.v("file+file[]",getString(R.string.inmueble)+"_"+id+a.getPath() );
@@ -124,7 +123,7 @@ public class Detalle extends Fragment {
         // Crear un nombre de archivo de imagen
         String timeStamp = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss").format(new Date());
         String imageFileName = getText(R.string.inmueble) + "_" + tv.getText() + "_" + timeStamp + "_";
-        File storageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM);
+        File storageDir = getActivity().getExternalFilesDir(null);
         File image = File.createTempFile(
                 imageFileName,  /* prefix */
                 ".jpg",         /* suffix */
