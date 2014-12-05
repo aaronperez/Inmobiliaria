@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:id="@+id/ivIcono"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/casa" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/localidad"
+        android:id="@+id/tvLocalidad"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/ivIcono"
+        android:layout_toEndOf="@+id/ivIcono"
+        android:paddingTop="15dp"
+        android:paddingLeft="3dp"
+        android:textColor="#ff0f0ddd"
+        android:gravity="bottom" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:id="@+id/tvID"
+        android:layout_alignBottom="@+id/tvLocalidad"
+        android:layout_toRightOf="@+id/tvLocalidad"
+        android:layout_toEndOf="@+id/tvLocalidad"
+        android:gravity="bottom|right"
+        android:paddingRight="10dp"
+        android:textColor="#ff0f0ddd"
+        android:layout_alignParentTop="true"
+        android:paddingTop="15dp" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:id="@+id/tvCalle"
+        android:layout_below="@+id/tvLocalidad"
+        android:layout_toRightOf="@+id/ivIcono"
+        android:layout_toEndOf="@+id/ivIcono"
+        android:paddingRight="10dp"
+        android:paddingTop="2dp"
+        android:paddingLeft="3dp"
+        android:textColor="#ff0f0ddd" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:id="@+id/tvPrecio"
+        android:layout_toEndOf="@+id/ivIcono"
+        android:gravity="right"
+        android:layout_below="@+id/tvCalle"
+        android:layout_toRightOf="@+id/ivIcono"
+        android:paddingRight="10dp"
+        android:paddingTop="2dp"
+        android:textColor="#ff0f0ddd" />
+
+</RelativeLayout>
