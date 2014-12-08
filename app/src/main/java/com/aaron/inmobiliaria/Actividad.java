@@ -16,7 +16,7 @@ public class Actividad extends Activity {
         setContentView(R.layout.activity_actividad);
         String s=getIntent().getExtras().getString("id");
         final Detalle fdetalle=(Detalle)getFragmentManager().findFragmentById(R.id.fDetalle);
-        fdetalle.setText(s);
+        fdetalle.inicia(s);
     }
 
 

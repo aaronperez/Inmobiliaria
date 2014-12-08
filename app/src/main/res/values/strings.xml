@@ -22,7 +22,7 @@
     <string name="precio">Precio:</string>
 
     <string name="mensajeCancelar">Ningún elemento modificado</string>
-    <string name="mensajeError">Hello world!</string>
+    <string name="mensajeError">No hay archivos</string>
     <string name="mensajeSeguro">Va a eliminar el siguiente inmueble y los datos asociados a él. ¿Está seguro?</string>
 
 

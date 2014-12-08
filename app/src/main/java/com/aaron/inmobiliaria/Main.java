@@ -53,8 +53,7 @@ public class Main extends Activity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 //String t=(String)lv.getItemAtPosition(i);
                 if(horizontal){
-                    fdetalle.setText(viviendas.get(i).getId());
-                    rellenarDetalle();
+                    fdetalle.inicia(viviendas.get(i).getId());
                 }
                 else{
                     Intent intent=new Intent(Main.this, Actividad.class);
@@ -66,12 +65,6 @@ public class Main extends Activity {
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -81,6 +74,38 @@ public class Main extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    /* Desplegar menú contextual*/
+    @Override
+    public void onCreateContextMenu(ContextMenu main, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(main, v, menuInfo);
+        MenuInflater inflater= getMenuInflater();
+        inflater.inflate(R.menu.contextual, main);
+    }
+
+    /* Al seleccionar elemento del menú contextual */
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        int id=item.getItemId();
+        AdapterView.AdapterContextMenuInfo info= (AdapterView.AdapterContextMenuInfo)item.getMenuInfo();
+        int index= info.position;
+        if (id == R.id.action_editar) {
+            edicion(index, "edit");
+            return true;
+        }else if (id == R.id.action_eliminar) {
+            edicion(index, "delete");
+            return true;
+        }
+        return super.onContextItemSelected(item);
+    }
+
+    public void initComponent()throws IOException, XmlPullParserException {
+        ad = new AdaptadorInmueble(this, R.layout.elementoinmobiliaria, viviendas);
+        lv = (ListView) findViewById(R.id.lvLista);
+        lv.setAdapter(ad);
+        registerForContextMenu(lv);
+        leer();
     }
 
     /***********Activities************/
@@ -119,42 +144,6 @@ public class Main extends Activity {
             Log.v("data", (data == null) + "");
             tostada(R.string.mensajeCancelar);
         }
-    }
-
-    /* Desplegar menú contextual*/
-    @Override
-    public void onCreateContextMenu(ContextMenu main, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(main, v, menuInfo);
-        MenuInflater inflater= getMenuInflater();
-        inflater.inflate(R.menu.contextual, main);
-    }
-
-    /* Al seleccionar elemento del menú contextual */
-    @Override
-    public boolean onContextItemSelected(MenuItem item) {
-        int id=item.getItemId();
-        AdapterView.AdapterContextMenuInfo info= (AdapterView.AdapterContextMenuInfo)item.getMenuInfo();
-        int index= info.position;
-        if (id == R.id.action_editar) {
-            edicion(index, "edit");
-            return true;
-        }else if (id == R.id.action_eliminar) {
-            edicion(index, "delete");
-            return true;
-        }
-        return super.onContextItemSelected(item);
-    }
-
-    public void initComponent()throws IOException, XmlPullParserException {
-        ad = new AdaptadorInmueble(this, R.layout.elementoinmobiliaria, viviendas);
-        lv = (ListView) findViewById(R.id.lvLista);
-        lv.setAdapter(ad);
-        registerForContextMenu(lv);
-        leer();
-    }
-
-    public void rellenarDetalle(){
-
     }
 
     //Ordena las viviendas por ID

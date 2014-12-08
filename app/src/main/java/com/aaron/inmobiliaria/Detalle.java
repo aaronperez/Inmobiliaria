@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -49,7 +48,6 @@ public class Detalle extends Fragment {
         // Inflate the layout for this fragment
         v= inflater.inflate(R.layout.fragment_detalle, container, false);
         tv=(TextView)v.findViewById(R.id.tvIdDetalle);
-
         return v;
     }
 
@@ -57,11 +55,11 @@ public class Detalle extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_TAKE_PHOTO && resultCode == getActivity().RESULT_OK) {
             tostada(R.string.archivoGuardado);
-            setText(id);
+            inicia(id);
         }
     }
 
-    public void setText(String s){
+    public void inicia(String s){
         id=s;
         tv.setText(id);
         fotos=new ArrayList<File>();
@@ -81,7 +79,6 @@ public class Detalle extends Fragment {
         File [] array = getActivity().getExternalFilesDir(null).listFiles();
         if(array != null && array.length >0){
             for(File a : array){
-                Log.v("file+file[]",getString(R.string.inmueble)+"_"+id+a.getPath() );
                 if(a.getPath().contains(getString(R.string.inmueble)+"_"+id)){
                     fotos.add(a);
                 }
